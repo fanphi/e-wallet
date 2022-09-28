@@ -1,0 +1,28 @@
+.wallet{
+    display: flex;
+    justify-content: center;
+}
+.card{
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.card-info{
+    display: flex;
+    justify-content: space-between;
+}
+.card-vendor{
+    position: relative;
+    left: 100px;
+}
+.card-name, .card-valid{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.name-valid{
+    font-size: 9px;
+}
+
