@@ -14,7 +14,8 @@
 }
 .card-vendor{
     position: relative;
-    left: 100px;
+    left: 70px;
+   
 }
 .card-name, .card-valid{
     display: flex;

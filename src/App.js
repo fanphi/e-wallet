@@ -5,7 +5,7 @@ import AddCard from './pages/AddCard';
 import './App.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import Card from './components/card/Card';
+// import Card from './components/card/Card';
 import  { getUser } from "./components/user/UserSlice"
 
 
@@ -18,8 +18,8 @@ useEffect(() => {
 }, [dispatch]);
 
 
-const { user } = useSelector((state) => state.user);
-// console.log(user);
+// const { user } = useSelector((state) => state.user);
+// console.log(user.first + user.last);
   return (
     <div className="App">
 
@@ -29,7 +29,7 @@ const { user } = useSelector((state) => state.user);
   <Route path="/addcard" element={<AddCard />} />
      </Routes>
 
-     {user && < Card user ={user}/>}
+     {/* {user && < Card user ={user}/>} */}
     </div>
   );
 }

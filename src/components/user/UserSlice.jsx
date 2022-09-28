@@ -6,36 +6,45 @@ export const getUser = createAsyncThunk("user/getUser", async () => {
   // );
   return fetch(`https://randomuser.me/api/`)
   .then((response) => response.json())
-  .then((data) => data.results[0]);
+  .then((data) => data.results[0].name);
 });
 
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    user: null,
+    // user: null,
     status: "No data",
-    // cardInformation: [
-    //   {
-    //     cardName: "",
-    //     cardNumber: "1234567891011121",
-    //     expireMonth: "12",
-    //     expireYear: "3",
-    //     ccv: "111",
-    //     vendor: "Visa",
-    //     activated: false
-    //   }
-    // ]
+    user: {
+      first: null,
+      last: null,
+    },
+      cards: [
+      {
+        vendor: "VISA",
+        // cardNumber: "1234567891011121".match(/.{1.4}/g).join(""),
+        cardNumber: "1234567891011121",
+        expireMonth: "12",
+        expireYear: "3",
+        ccv: "111",
+        activated: true
+      }
+    ]
   },
   reducers: {
+    addCard: (state, {payload})=>{
+      state.cards.push(payload);
+      console.log(payload)
+      console.log()
+    }
     //actions
+    //addcard delete activate
   },
   extraReducers: {
     [getUser.fulfilled]: (state, action) => {
-      // const [{name:{first, last}}] = action.payload.results;
-      // const { first, last } = action.payload.name;
-      // console.log(first + " " + last)
-      state.user = action.payload.name;
+      state.user.first = action.payload.first;
+      state.user.last = action.payload.last;
       state.status = "Found data!";
+      
     },
     [getUser.pending]: (state, action) => {
       state.status = "Loading data...";
@@ -45,6 +54,7 @@ const userSlice = createSlice({
       },
   },
 });
+export const { addCard } = userSlice.actions;
 
 export default userSlice.reducer;
 
