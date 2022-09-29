@@ -1,14 +1,30 @@
 .wallet{
-    display: flex;
+     display: flex;
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    flex-direction:column;
+    align-items: center; 
+    
+   
+   
 }
-.card{
+.card, .active-card{
     width: 300px;
     border: 1px solid black;
     border-radius: 5px;
     margin: 1%;
+}
+
+.card{
+    background-color: lightblue;
+    order: 2;
+  
+}
+
+.active-card{
+    background-color: green;
+     order: 1;
+ 
+
 }
 
 .card-info{

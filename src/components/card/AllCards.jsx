@@ -1,37 +1,51 @@
-import { useState } from "react";
 import "./card.css"
+import { deleteCard, changeActiveCard } from "../user/UserSlice";
+import { useDispatch } from "react-redux";
 
-// import { Link } from "react-router-dom";
-const AllCards = ( {user, cards} ) => {
+const AllCards = ( {user, cardInfo} ) => {
+ const dispatch = useDispatch();
+
+    console.log(cardInfo.activated)
+
+ const handleDelete = () => {
+  dispatch(deleteCard(cardInfo))
+ }
+const handleActivate = () => {
+  dispatch(changeActiveCard(cardInfo))
+}
 
   console.log(user);
   let firstName = user.first.toUpperCase();
   let lastName = user.last.toUpperCase();
-  console.log(cards);
-
 
 return(
     <>
     
-   
-    < div className="wallet">
-    
-    {cards.map((card)=> (
-        <div className="card">
-             <p className="card-vendor">{card.vendor}</p>
-             <p className="card-number">{card.cardNumber}</p>
+      {cardInfo.activated ? <div className="active-card"> 
+             <p className="card-vendor">{cardInfo.vendor}</p>
+             <p className="card-number">{cardInfo.cardNumber}</p>
              <span className="card-info">
              <p className="card-name"> <span className="name-valid">CARDHOLDER'S NAME</span> {firstName + " " + lastName}</p>
-             <p className="card-valid"><span className="name-valid">VALID</span> {card.expireMonth} / {card.expireYear} </p>
+             <p className="card-valid"><span className="name-valid">VALID</span> {cardInfo.expireMonth} / {cardInfo.expireYear} </p>
              </span>
              </div>
-          ))}
-        
-    </div>
+             :
+             <div className="card"> 
+             <p className="card-vendor">{cardInfo.vendor}</p>
+             <p className="card-number">{cardInfo.cardNumber}</p>
+             <span className="card-info">
+             <p className="card-name"> <span className="name-valid">CARDHOLDER'S NAME</span> {firstName + " " + lastName}</p>
+             <p className="card-valid"><span className="name-valid">VALID</span> {cardInfo.expireMonth} / {cardInfo.expireYear} </p>
+             </span>
+             {cardInfo.activated === false && 
+             <button onClick={handleDelete}>Delete Card</button>}
+              {!cardInfo.activated && 
+             <button onClick={handleActivate}>Activate Card</button>}
+             </div>
+              }
+
     </>
 )
 }
-
-
 
 export default AllCards;

@@ -1,9 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getUser = createAsyncThunk("user/getUser", async () => {
-  // return fetch("https://randomuser.me/api/").then((res) =>
-  //   res.json()
-  // );
+
   return fetch(`https://randomuser.me/api/`)
   .then((response) => response.json())
   .then((data) => data.results[0].name);
@@ -12,7 +10,6 @@ export const getUser = createAsyncThunk("user/getUser", async () => {
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    // user: null,
     status: "No data",
     user: {
       first: null,
@@ -21,23 +18,38 @@ const userSlice = createSlice({
       cards: [
       {
         vendor: "VISA",
-        // cardNumber: "1234567891011121".match(/.{1.4}/g).join(""),
         cardNumber: "1234567891011121",
         expireMonth: "12",
         expireYear: "3",
         ccv: "111",
-        activated: true
+        activated: true,
+        
       }
-    ]
+    ],
+   
   },
   reducers: {
     addCard: (state, {payload})=>{
       state.cards.push(payload);
       console.log(payload)
-      console.log()
+     },
+
+     deleteCard: (state, {payload})=>{
+     state.cards = state.cards.filter(({ cardNumber }) => cardNumber !== payload.cardNumber);
+     console.log(payload + " delete card")
+
+     
+     },
+     changeActiveCard: (state, { payload }) => {
+      state.cards
+        .find(({ activated }) => activated)
+        .activated = false;
+
+      state.cards
+        .find(({ cardNumber }) => cardNumber === payload.cardNumber)
+        .activated = true;
     }
-    //actions
-    //addcard delete activate
+
   },
   extraReducers: {
     [getUser.fulfilled]: (state, action) => {
@@ -54,7 +66,7 @@ const userSlice = createSlice({
       },
   },
 });
-export const { addCard } = userSlice.actions;
+export const { addCard, deleteCard, changeActiveCard } = userSlice.actions;
 
 export default userSlice.reducer;
 

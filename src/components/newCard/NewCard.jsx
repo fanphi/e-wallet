@@ -1,51 +1,3 @@
-// import { useSelector } from "react-redux";
-// import { addCard } from "../user/UserSlice";
-// const NewCard = (props) => {
-//     let handleSubmit = () => {
-//         let vendor = document.querySelector("#vendor").value;
-//         let cardNumber = document.querySelector("#cardNumber").value;
-//         let expireMonth = document.querySelector("#expireMonth").value;
-//         let expireYear = document.querySelector("#expireYear").value;
-//         let ccv = document.querySelector("#ccv").value;
-    
-//         props.newCard(vendor,cardNumber, expireMonth, expireYear, ccv);
-        
-//     }
-//       return (
-//         <div >
-//             <form action="">
-//             <label htmlFor="vendor">VENDOR: </label>
-//             <select id="vendor">
-//                 <option value="VISA">VISA</option>
-//                 <option value="MASTERCARD">MASTERCARD</option>
-//                 <option value="AMERICAN EXPRESS">AMERICAN EXPRESS</option>
-//                 </select>
-//             <br />
-    
-//             <label htmlFor="cardNumber">CARD NUMBER: </label>
-//             <input type="text" id="cardNumber" />
-//             <br/>
-//             <label htmlFor="expireMonth">EXPIRATION MONTH: </label>
-//             <input type="number" id="expireMonth" />
-//             <br/>
-//             <label htmlFor="expireYear">EXPIRATION YEAR: </label>
-//             <input type="number" id="expireYear" />
-//             <br/>
-//             <label htmlFor="ccv">CCV: </label>
-//             <input type="number" id="ccv" />
-//             <br/>
-//             <label htmlFor="name">NAME: </label>
-//             <input type="text" id="name" />
-//             <br/>
-//             <button onClick={handleSubmit}>Add new card</button>
-//             </form>
-//         </div>
-//       )
-    
-// }
-
-// export default NewCard;
-
 import { useSelector, useDispatch } from "react-redux";
 import { addCard } from "../user/UserSlice";
 
@@ -53,11 +5,8 @@ const NewCard = ({user, newCard, setNewCard}) => {
     
     const dispatch = useDispatch();
     const cardLength =  useSelector((state) => state.user)?.cards.length;
-   
     console.log(cardLength)
     console.log(newCard)
-
-
 
     let cardHolderName = user.first.toUpperCase() + " " + user.last.toUpperCase();
 
@@ -66,36 +15,21 @@ const NewCard = ({user, newCard, setNewCard}) => {
         setNewCard((previous)=>({
             ...previous,
             [e.target.id]: e.target.value
-         }))
-        
+         }))  
     }
 
     let handleSubmit = (e) => {
         e.preventDefault();
-            console.log("test")
         if (cardLength >= 4){
         alert("You have added the maximum number of cards")
     }
     else{
         const addedCard = {...newCard, activated: false}
-        // console.log(addedCard)
+    
         dispatch(addCard(addedCard));
+        alert("Your card has been added to your e-wallet, please delete one card!")
     }
     }
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    
-    //     // if (maxCards) {
-    // //   alert("You have reached the maximum limit for cards")
-    // //     } else {
-    //         dispatch(addCard(newCard));
-    //         setNewCard(myNewCard);
-    //       console.log("test");
-    //     // }
-    //   };
-
-    
  
       return (
         <div >
