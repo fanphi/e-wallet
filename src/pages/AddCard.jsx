@@ -9,10 +9,11 @@ const AddCard = () => {
     const { user, cards  } = useSelector((state) => state.user);
 
     let myNewCard =     {
+        id: Date.now(),
         vendor: "VISA",
-        cardNumber: "****************",
-        expireMonth: "MM",
-        expireYear: "YY",
+        cardNumber: "1111222233334444",
+        expireMonth: "9",
+        expireYear: "22",
         ccv: "123",
         activated: false
         
@@ -21,17 +22,18 @@ const AddCard = () => {
     console.log(cards)
    
 return (
-     <div>
-         <Link to="/">
-           <button>Start</button>
-           </Link>
-          
+     <main>
+        
 
-        Add Card
+      <h2>ADD A CARD</h2>
      
          {user.first && <Card user={user} newCard={newCard}/>}
          {user.first && <NewCard user={user} newCard={newCard} setNewCard={setNewCard}/>}
-    </div>
+         <Link to="/">
+           <button className="btn">GO TO MY E-WALLET</button>
+           </Link>
+          
+    </main>
 )
 }
 

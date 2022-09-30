@@ -6,6 +6,9 @@
     font-family: "Inconsolata";   
    
 }
+/* *{
+    font-family: "Inconsolata";;
+} */
 .card, .active-card{
     width: 300px;
     /* border: 1px solid black; */
@@ -57,6 +60,11 @@
 
 .btn{
     margin: 20px;
+}
+input, select{
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
 }
 .card-info{
     display: flex;

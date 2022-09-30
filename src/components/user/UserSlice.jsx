@@ -20,10 +20,11 @@ const userSlice = createSlice({
         vendor: "VISA",
         cardNumber: "1234567891011121",
         expireMonth: "12",
-        expireYear: "3",
+        expireYear: "22",
         ccv: "111",
         activated: true,
-        
+        id: Math.random()
+      
       }
     ],
    
@@ -34,19 +35,19 @@ const userSlice = createSlice({
       console.log(payload)
      },
 
-     deleteCard: (state, {payload})=>{
-     state.cards = state.cards.filter(({ cardNumber }) => cardNumber !== payload.cardNumber);
-     console.log(payload + " delete card")
-
-     
-     },
+    deleteCard: (state, {payload})=>{
+      state.cards = state.cards.filter(({ id }) => id !== payload.id);
+      console.log(payload + " delete card")
+ 
+      
+      },
      changeActiveCard: (state, { payload }) => {
       state.cards
         .find(({ activated }) => activated)
         .activated = false;
 
       state.cards
-        .find(({ cardNumber }) => cardNumber === payload.cardNumber)
+        .find(({ id }) => id === payload.id)
         .activated = true;
     }
 
