@@ -39,7 +39,7 @@ const NewCard = ({user, newCard, setNewCard}) => {
             <select id="vendor" name="vendor" onChange={(e) => handleOnChange(e)} required>
                 <option value="VISA">VISA</option>
                 <option value="MASTERCARD">MASTERCARD</option>
-                <option value="AMERICAN EXPRESS">AMERICAN EXPRESS</option>
+                <option value="AMEX">AMERICAN EXPRESS</option>
                 </select>
             <br />
     

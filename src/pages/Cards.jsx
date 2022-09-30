@@ -6,13 +6,7 @@ const Cards = () =>{
     const { user, cards  } = useSelector((state) => state.user);
   
 return (
-    <div>
-        Cards
-
-        <Link to="/addcard">
-           
-          <button>Add Card</button>
-          </Link>
+    <main>
        
             <div className="wallet">
          {user.first && cards?.map((card, i) => {
@@ -20,7 +14,13 @@ return (
           return <AllCards key={i} cardInfo={card} user={user} />
         })}
         </div>
-    </div>
+
+        <Link to="/addcard">
+           
+           <button className="btn">ADD A NEW CARD</button>
+           </Link>
+
+    </main>
 )
 }
 

@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { useDispatch } from "react-redux";
 // import Card from './components/card/Card';
 import  { getUser } from "./components/user/UserSlice"
+import Header from './components/Header';
 
 
 function App() {
@@ -19,7 +20,7 @@ useEffect(() => {
 
   return (
     <div className="App">
-
+    < Header />
      <Routes>
      <Route path="/cards" element={<Cards />}/>
   <Route path="/" element={<Cards />}/>
