@@ -5,7 +5,6 @@ import AddCard from './pages/AddCard';
 import './App.css';
 import { useEffect } from 'react';
 import { useDispatch } from "react-redux";
-// import Card from './components/card/Card';
 import  { getUser } from "./components/user/UserSlice"
 import Header from './components/Header';
 

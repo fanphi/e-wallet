@@ -10,8 +10,6 @@ import chip from "../../assets/chip.png"
 const AllCards = ( {user, cardInfo} ) => {
  const dispatch = useDispatch();
 
-    console.log(cardInfo.activated)
-
  const handleDelete = () => {
   dispatch(deleteCard(cardInfo))
  }
@@ -19,7 +17,6 @@ const handleActivate = () => {
   dispatch(changeActiveCard(cardInfo))
 }
 
-  console.log(user);
   let firstName = user.first.toUpperCase();
   let lastName = user.last.toUpperCase();
 

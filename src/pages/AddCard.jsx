@@ -6,20 +6,20 @@ import { useState } from "react";
 
 const AddCard = () => {
    
-    const { user, cards  } = useSelector((state) => state.user);
+    const { user  } = useSelector((state) => state.user);
 
     let myNewCard =     {
-        id: Date.now(),
+        id: Math.random(),
         vendor: "VISA",
-        cardNumber: "1111222233334444",
-        expireMonth: "9",
-        expireYear: "22",
+        cardNumber: "****************",
+        expireMonth: "MM",
+        expireYear: "YY",
         ccv: "123",
         activated: false
         
     }
     const [newCard, setNewCard] = useState(myNewCard);
-    console.log(cards)
+  
    
 return (
      <main>

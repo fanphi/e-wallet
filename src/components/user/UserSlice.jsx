@@ -24,7 +24,6 @@ const userSlice = createSlice({
         ccv: "111",
         activated: true,
         id: Math.random()
-      
       }
     ],
    
@@ -32,15 +31,12 @@ const userSlice = createSlice({
   reducers: {
     addCard: (state, {payload})=>{
       state.cards.push(payload);
-      console.log(payload)
      },
 
     deleteCard: (state, {payload})=>{
       state.cards = state.cards.filter(({ id }) => id !== payload.id);
-      console.log(payload + " delete card")
- 
-      
       },
+
      changeActiveCard: (state, { payload }) => {
       state.cards
         .find(({ activated }) => activated)

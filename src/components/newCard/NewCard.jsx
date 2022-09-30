@@ -8,8 +8,6 @@ const NewCard = ({user, newCard, setNewCard}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const cardLength =  useSelector((state) => state.user)?.cards.length;
-    console.log(cardLength)
-    console.log(newCard)
 
     let cardHolderName = user.first.toUpperCase() + " " + user.last.toUpperCase();
 
@@ -34,9 +32,6 @@ const NewCard = ({user, newCard, setNewCard}) => {
         navigate("/")
     }
     }
-
-    let date = Math.random();
-    console.log(date + " cardtest");
  
       return (
         <div >

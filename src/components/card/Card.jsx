@@ -7,7 +7,7 @@ import chip from "../../assets/chip.png"
 
 const Card = ( {user, newCard} ) => {
 
-  console.log(newCard.vendor);
+ 
   let firstName = user.first.toUpperCase();
   let lastName = user.last.toUpperCase();
   let cardClass = "card";
