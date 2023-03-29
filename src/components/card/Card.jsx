@@ -30,7 +30,11 @@ const Card = ({ user, newCard }) => {
               className="contactless-logo"
             />
           </span>
-          <p className="card-number">{newCard.cardNumber}</p>
+          <p className="card-number">
+            {newCard.cardNumber.length >= 1
+              ? newCard.cardNumber.match(/.{1,4}/g).join(" ")
+              : "**** **** **** ****"}
+          </p>
           <span className="card-info">
             <p className="card-name">
               {" "}

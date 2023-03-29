@@ -5,6 +5,9 @@ export const getUser = createAsyncThunk("user/getUser", async () => {
     .then((response) => response.json())
     .then((data) => data.results[0].name);
 });
+const date = new Date();
+const year = date.getFullYear();
+const expireYear = year.toString().slice(-2);
 
 const userSlice = createSlice({
   name: "user",
@@ -19,7 +22,7 @@ const userSlice = createSlice({
         vendor: "VISA",
         cardNumber: "1234567891011121",
         expireMonth: "12",
-        expireYear: "22",
+        expireYear: expireYear,
         ccv: "111",
         activated: true,
         id: Math.random(),

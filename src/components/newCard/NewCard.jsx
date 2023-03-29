@@ -6,6 +6,10 @@ const NewCard = ({ user, newCard, setNewCard }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cardLength = useSelector((state) => state.user)?.cards.length;
+  const date = new Date();
+
+  const year = date.getFullYear();
+  const minYear = year.toString().slice(-2);
 
   let cardHolderName = user.first.toUpperCase() + " " + user.last.toUpperCase();
 
@@ -18,6 +22,7 @@ const NewCard = ({ user, newCard, setNewCard }) => {
 
   let handleSubmit = (e) => {
     e.preventDefault();
+
     if (cardLength >= 4) {
       alert(
         "You have added the maximum number of cards, please delete a card!"
@@ -54,7 +59,7 @@ const NewCard = ({ user, newCard, setNewCard }) => {
           type="number"
           id="cardNumber"
           name="cardNumber"
-          placeholder="1234567891012345"
+          placeholder="1234 5678 9101 2345"
           onChange={(e) => handleOnChange(e)}
           min="1000000000000000"
           max="9999999999999999"
@@ -84,7 +89,7 @@ const NewCard = ({ user, newCard, setNewCard }) => {
           name="expireYear"
           placeholder="YY"
           onChange={(e) => handleOnChange(e)}
-          min="22"
+          min={minYear}
           max="99"
           required
         />
